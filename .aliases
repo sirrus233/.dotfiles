@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/bin/zsh
 
 # Navigation shortcuts
 alias sl='ls'
@@ -13,17 +13,20 @@ alias gd='git diff'
 alias gk='gitk --all &'
 
 # Programs
+function openbg() {
+    "$@" &> /dev/null &|
+}
 alias train='/usr/bin/sl'
-alias web='firefox &> /dev/null &'
-alias iweb='firefox --private-window &> /dev/null &'
-alias intellij='idea &> /dev/null &'
+alias web='openbg firefox'
+alias iweb='openbg firefox --private-window'
+alias intellij='openbg idea'
 
 # Games
-alias steam='steam &> /dev/null &'
-alias retro='retroarch &> /dev/null &'
-alias neverhood='scummvm neverhood-win &> /dev/null &'
-alias myst='scummvm myst-win &> /dev/null &'
-alias riven='scummvm riven &> /dev/null &'
+alias steam='openbg steam'
+alias retro='openbg retroarch'
+alias neverhood='openbg scummvm neverhood-win'
+alias myst='openbg scummvm myst-win'
+alias riven='openbg scummvm riven'
 
 # Other
 alias aliases='vim ~/.aliases && source ~/.aliases'
