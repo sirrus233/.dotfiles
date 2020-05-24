@@ -34,6 +34,7 @@ alias riven='openbg scummvm riven'
 alias aliases='vim ~/.aliases && source ~/.aliases'
 alias dotfile='git --git-dir=/home/bradley/.dotfiles --work-tree=/home/bradley'
 alias explicit="comm -23 <(pacman -Qeq | sort) <({ pacman -Qqg base-devel xorg; } | sort | uniq)"
+alias orphan="pacman -Qdt"
 alias clean='cleaning_audit'
 alias windows="sudo efibootmgr -n 0000 -t 0 && reboot"
 
