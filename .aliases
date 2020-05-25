@@ -43,3 +43,7 @@ function alldir() {
         cd $d; echo $d; eval $1; cd ..; echo;
     done
 }
+
+function gitignore() {
+    curl https://raw.githubusercontent.com/github/gitignore/master/$1.gitignore > .gitignore
+}
