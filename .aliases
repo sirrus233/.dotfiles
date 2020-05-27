@@ -36,6 +36,47 @@ alias riven='openbg scummvm riven'
 
 # Python
 alias pr='poetry run'
+alias pyupdate='poetry update && pr pre-commit autoupdate'
+alias pyvalidate='pr pytest && pr pre-commit run -a'
+function pyproj() {
+    # Init script variables
+    proj_dir=$1
+    proj_module=${proj_dir:gs/-/_}
+    template_dir="/tmp/python_template"
+
+    # Create and initialize a new poetry project
+    poetry new $proj_dir
+
+    # Clone the template dir, and copy over files
+    git clone git@github.com:sirrus233/python-template.git $template_dir
+    rm -rf $template_dir/.git
+    for file in $(ls -A $template_dir); do
+        cp $template_dir/$file $proj_dir
+    done
+    rm -rf $template_dir
+
+    # Make some customized edits to the starting files
+    sed -i -- "s/<PROJECT>/$proj_module/g" $proj_dir/setup.cfg
+    sed -i '1i """Top-level module"""' $proj_dir/$proj_module/__init__.py
+
+    pushd $proj_dir > /dev/null
+    # Initialize git repo and add a gitignore file
+    git init
+    gitignore Python
+    # Install initial dependencies
+    poetry add --dev pytest-cov
+    poetry add --dev pre-commit
+    poetry add --dev pylint
+    poetry install
+    # Install latest pre-commit tool versions
+    pr pre-commit autoupdate
+    pr pre-commit install
+    # Fix default poetry formatting
+    sed -i -- "s/'/\"/g" $proj_module/* tests/*
+    # Create initial commit
+    ga && gc "Initial commit"
+    popd > /dev/null
+}
 
 # Other
 alias aliases='vim ~/.aliases && source ~/.aliases'
