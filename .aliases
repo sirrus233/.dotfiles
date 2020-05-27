@@ -11,8 +11,12 @@ alias gco='git checkout'
 alias gs='git status'
 alias gf='git fetch'
 alias gp='git pull'
+alias gm='git merge'
 alias gd='git diff'
 alias gk='gitk --all &'
+function gitignore() {
+    curl https://raw.githubusercontent.com/github/gitignore/master/$1.gitignore > .gitignore
+}
 
 # Programs
 function openbg() {
@@ -30,6 +34,9 @@ alias neverhood='openbg scummvm neverhood-win'
 alias myst='openbg scummvm myst-win'
 alias riven='openbg scummvm riven'
 
+# Python
+alias pr='poetry run'
+
 # Other
 alias aliases='vim ~/.aliases && source ~/.aliases'
 alias dotfile='git --git-dir=/home/bradley/.dotfiles --work-tree=/home/bradley'
@@ -37,13 +44,8 @@ alias explicit="comm -23 <(pacman -Qeq | sort) <({ pacman -Qqg base-devel xorg; 
 alias orphan="pacman -Qdt"
 alias clean='cleaning_audit'
 alias windows="sudo efibootmgr -n 0000 -t 0 && reboot"
-
 function alldir() {
     for d in $(ls -d */); do 
         cd $d; echo $d; eval $1; cd ..; echo;
     done
-}
-
-function gitignore() {
-    curl https://raw.githubusercontent.com/github/gitignore/master/$1.gitignore > .gitignore
 }
