@@ -37,7 +37,7 @@ alias riven='openbg scummvm riven'
 # Python
 alias pr='poetry run'
 alias pyupdate='poetry update && pr pre-commit autoupdate'
-alias pyvalidate='pr pytest && pr pre-commit run -a'
+alias pyvalidate='pr pre-commit run -a && pr pytest'
 function pyproj() {
     # Init script variables
     proj_dir=$1
