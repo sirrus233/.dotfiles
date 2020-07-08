@@ -21,6 +21,7 @@ function gitignore() {
 # Programs
 function openbg() {
     "$@" &> /dev/null &|
+    echo $!
 }
 alias train='/usr/bin/sl'
 alias web='openbg firefox'
