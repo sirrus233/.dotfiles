@@ -1,2 +1,2 @@
 [[ -f ~/.aliases ]] && source ~/.aliases
-[[ -f ~/.aliases_work ]] && source ~/.aliases_work
+[[ -f ~/.work_aliases ]] && source ~/.work_aliases
