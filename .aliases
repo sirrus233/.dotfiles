@@ -31,6 +31,7 @@ alias intellij='openbg idea'
 # Games
 alias steam='openbg steam'
 alias retro='openbg retroarch'
+alias dolphin='openbg dolphin-emu'
 alias neverhood='openbg scummvm neverhood-win'
 alias myst='openbg scummvm myst-win'
 alias riven='openbg scummvm riven'
