@@ -30,11 +30,12 @@ alias intellij='openbg idea'
 
 # Games
 alias steam='openbg steam'
-alias retro='openbg retroarch'
+alias retro='openbg retroarch --fullscreen'
 alias dolphin='openbg dolphin-emu'
 alias neverhood='openbg scummvm neverhood-win'
 alias myst='openbg scummvm myst-win'
 alias riven='openbg scummvm riven'
+alias zork='zork1'
 
 # Python
 alias pr='poetry run'
