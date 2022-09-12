@@ -15,7 +15,7 @@ alias gm='git merge'
 alias gd='git diff'
 alias gk='gitk --all &'
 function gitignore() {
-    curl https://raw.githubusercontent.com/github/gitignore/master/$1.gitignore > .gitignore
+    curl https://raw.githubusercontent.com/github/gitignore/main/$1.gitignore
 }
 
 # Programs
@@ -27,15 +27,23 @@ alias train='/usr/bin/sl'
 alias web='openbg firefox'
 alias iweb='openbg firefox --private-window'
 alias intellij='openbg idea'
+alias pycharm='openbg pycharm'
+alias discord='openbg discord'
 
 # Games
 alias steam='openbg steam'
+alias lutris='openbg lutris'
 alias retro='openbg retroarch --fullscreen'
 alias dolphin='openbg dolphin-emu'
 alias neverhood='openbg scummvm neverhood-win'
 alias myst='openbg scummvm myst-win'
 alias riven='openbg scummvm riven'
 alias zork='zork1'
+function wotr() {
+    pushd ~/games/wotr > /dev/null
+    openbg java -jar WOTR-GandalfV8.jar
+    popd > /dev/null
+}
 
 # Python
 alias pr='poetry run'
@@ -71,7 +79,7 @@ function pyproj() {
     pushd $proj_dir > /dev/null
     # Initialize git repo and add a gitignore file
     git init
-    gitignore Python
+    gitignore Python > .gitignore
     # Install initial dependencies
     poetry add --dev pytest-cov
     poetry add --dev pre-commit
